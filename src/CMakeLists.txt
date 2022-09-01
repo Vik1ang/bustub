@@ -1,8 +1,10 @@
+add_subdirectory(common)
 add_subdirectory(primer)
 
 add_library(bustub STATIC ${ALL_OBJECT_FILES})
 
 set(BUSTUB_LIBS
+        bustub_common
         bustub_primer
         )
 
@@ -17,7 +19,7 @@ target_link_libraries(
         ${BUSTUB_THIRDPARTY_LIBS}
 )
 
-target_link_directories(
+target_include_directories(
         bustub PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
